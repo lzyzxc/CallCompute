@@ -17,6 +17,6 @@ public class TypePartitioner extends Partitioner<Text, OptrBean> {
     public int getPartition(Text key, OptrBean callOptr, int i) {
         Integer type = typeDict.get(key.toString());
 
-        return type == null?4:type;
+        return type == null?0:type;
     }
 }
