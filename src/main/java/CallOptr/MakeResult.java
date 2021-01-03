@@ -5,12 +5,12 @@ import java.io.*;
 public class MakeResult {
     //生成最终结果文件
     public void makeRes() throws IOException {
-        String filePath = "out2.txt";
+        String filePath = "./result/out2.txt";
         FileInputStream fin = new FileInputStream(filePath);
         InputStreamReader reader = new InputStreamReader(fin);
         BufferedReader bufferedReader = new BufferedReader(reader);
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("result2.txt"));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./result/result2.txt"));
 
         String line = "";
         while((line = bufferedReader.readLine()) != null){
@@ -22,8 +22,11 @@ public class MakeResult {
             for (int i=1; i<temp.length; i++){
                 optrCount += Long.parseLong(temp[i]);
             }
-            for (int i=1; i<temp.length; i++){
-                bufferedWriter.write(String.format("%.2f", 100*(double)Long.parseLong(temp[i]) /(double) optrCount)+"%,");
+            for (int i=1; i<temp.length; i++) {
+                bufferedWriter.write(String.format("%.2f", 100 * (double) Long.parseLong(temp[i]) / (double) optrCount) + "%");
+                if(i < temp.length -1 ){
+                    bufferedWriter.write(",");
+                }
             }
             bufferedWriter.write("\n");
         }

@@ -5,12 +5,12 @@ import java.io.*;
 public class MakeResult {
     //生成最终结果文件
     public void makeRes() throws IOException {
-        String filePath = "out3.txt";
+        String filePath = "./result/out3.txt";
         FileInputStream fin = new FileInputStream(filePath);
         InputStreamReader reader = new InputStreamReader(fin);
         BufferedReader bufferedReader = new BufferedReader(reader);
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("result3.txt"));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./result/result3.txt"));
 
         String line = "";
         while((line = bufferedReader.readLine()) != null){
@@ -26,17 +26,23 @@ public class MakeResult {
                     double part = 100*(double)Long.parseLong(temp[i]) /(double) timeCount;
                     //整数比例
                     if (Math.round(part) - part==0){
-                        bufferedWriter.write((long)part+"%,");
+                        bufferedWriter.write((long)part+"%");
                     }
                     //小数比例
                     else {
-                        bufferedWriter.write(String.format("%.2f", part)+"%,");
+                        bufferedWriter.write(String.format("%.2f", part)+"%");
+                    }
+                    if(i < temp.length -1 ){
+                        bufferedWriter.write(",");
                     }
                 }
             }
             else {
                 for (int i=1; i<temp.length; i++){
-                    bufferedWriter.write("0%,");
+                    bufferedWriter.write("0%");
+                    if(i < temp.length -1 ){
+                        bufferedWriter.write(",");
+                    }
                 }
             }
 

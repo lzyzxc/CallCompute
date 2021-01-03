@@ -5,12 +5,12 @@ import java.io.*;
 public class MakeResult {
     //生成最终结果文件
     public void makeRes() throws IOException {
-        String filePath = "out1.txt";
+        String filePath = "./result/out1.txt";
         FileInputStream fin = new FileInputStream(filePath);
         InputStreamReader reader = new InputStreamReader(fin);
         BufferedReader bufferedReader = new BufferedReader(reader);
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("result1.txt"));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("./result/result1.txt"));
 
         String line = "";
         while((line = bufferedReader.readLine()) != null){
